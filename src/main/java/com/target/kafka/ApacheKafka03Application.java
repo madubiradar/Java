@@ -8,7 +8,6 @@ public class ApacheKafka03Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApacheKafka03Application.class, args);
-		System.out.println("test kafka start");
 	}
 
 }

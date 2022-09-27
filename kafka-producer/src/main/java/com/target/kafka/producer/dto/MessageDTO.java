@@ -1,11 +1,10 @@
-package com.target.kafka.dto;
+package com.target.kafka.producer.dto;
 
-import com.target.kafka.entity.Message;
-import com.target.kafka.entity.MessageType;
+import com.target.kafka.producer.entity.Message;
+import com.target.kafka.producer.entity.MessageType;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @ToString
@@ -13,7 +12,6 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class MessageDTO {
 
     @NotBlank
@@ -27,11 +25,11 @@ public class MessageDTO {
 
     public Message toMessage(){
         return Message.builder()
-                .id(id)
                 .messageReferenceId(UUID.randomUUID().toString())
                 .message(message)
                 .messageType(MessageType.valueOf(messageType))
                 .build();
+
     }
 
 

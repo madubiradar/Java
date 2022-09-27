@@ -1,26 +1,23 @@
-package com.target.kafka.entity;
+package com.target.kafka.producer.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.apache.kafka.common.serialization.Serializer;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-@ToString
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Message implements Serializable {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String message;
@@ -32,6 +29,9 @@ public class Message implements Serializable {
 
     @Version
     private long version;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
 
 
 }
